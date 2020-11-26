@@ -4,6 +4,7 @@ const Character = require('./character');
 function Enemy(config) {
   Character.call(this, config);
   this.damage = config.damage;
+  this.experienceReward = 100;
 }
 
 Enemy.prototype = Object.create(Character.prototype);
@@ -19,8 +20,13 @@ Enemy.prototype._describeAttack = function (target) {
 };
 
 Enemy.prototype.attack = function (target) {
-  target._takeDamage(this.damage);
-  return this._describeAttack(target);
+  if (this.isAlive) {
+    target._takeDamage(this.damage);
+    return this._describeAttack(target);
+  }
+  else {
+    return 'Enemy is dead'
+  }
 };
 
 module.exports = Enemy;
