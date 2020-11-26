@@ -7,6 +7,7 @@ function Character(config) {
   this.level = 1;
   this.baseAttack = 0;
   this.baseDefence = 0;
+  this.level = config.level || 1;
 }
 
 Character.prototype = {
