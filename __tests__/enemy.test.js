@@ -34,7 +34,7 @@ describe('enemy', () => {
       expect(enemy.dialogue).toBe(config.dialogue);
     });
     it('has a damage rating', () => {
-      expect(enemy.damage).toBe(config.damage);
+      expect(enemy.damage).toBe(config.attackTotal);
     });
   });
   describe('attack', () => {
