@@ -9,7 +9,7 @@ One member of your group should fork this repository. This person should give th
 Open the repository:
 
 ```bash
-  cd debug-adventure/
+  cd git-quest/
 ```
 
 Install dependencies:
