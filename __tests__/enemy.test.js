@@ -19,7 +19,6 @@ describe('enemy', () => {
       health: 10,
       maxHealth: 10,
       dialogue: 'rattle',
-      damage: 2,
     };
     enemy = new Enemy(config);
   });
@@ -33,17 +32,14 @@ describe('enemy', () => {
       expect(enemy.maxHealth).toBe(config.maxHealth);
       expect(enemy.dialogue).toBe(config.dialogue);
     });
-    it('has a damage rating', () => {
-      expect(enemy.damage).toBe(config.attackTotal);
-    });
   });
   describe('attack', () => {
     it('can attack a target', () => {
       enemy.attack(victim);
-      expect(victim.health).toBe(victim.maxHealth - enemy.damage);
+      expect(victim.health).toBe(victim.maxHealth - enemy.attackTotal);
     });
     it('can describe its attack', () => {
-      const attackLine = `${enemy.name} lets out a ${enemy.dialogue}, and hits ${victim.name} for ${config.damage} damage!`;
+      const attackLine = `${enemy.name} lets out a ${enemy.dialogue}, and hits ${victim.name} for ${enemy.attackTotal} damage!`;
       expect(enemy.attack(victim)).toBe(attackLine);
     });
   });

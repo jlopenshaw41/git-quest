@@ -3,8 +3,7 @@ const Character = require('./character');
 
 function Enemy(config) {
   Character.call(this, config);
-  this.damage = config.damage;
-  this.experienceReward = 100;
+  this.experienceReward = config.experienceReward || 100;
 }
 
 Enemy.prototype = Object.create(Character.prototype);
@@ -16,16 +15,15 @@ Object.defineProperty(Enemy.prototype, 'constructor', {
 });
 
 Enemy.prototype._describeAttack = function (target) {
-  return `${this.name} lets out a ${this.dialogue}, and hits ${target.name} for ${this.damage} damage!`;
+  return `${this.name} lets out a ${this.dialogue}, and hits ${target.name} for ${this.attackTotal} damage!`;
 };
 
 Enemy.prototype.attack = function (target) {
   if (this.isAlive) {
-    target._takeDamage(this.damage);
+    target._takeDamage(this.attackTotal);
     return this._describeAttack(target);
-  } else {
-    return 'Enemy is dead'
   }
+  return 'Enemy is dead';
 };
 
 module.exports = Enemy;

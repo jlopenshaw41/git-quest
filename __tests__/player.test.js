@@ -52,7 +52,8 @@ describe('constructor function', () => {
       player.attack(trainingDummy);
     });
     it('can attack with a weapon', () => {
-      expect(trainingDummy.maxHealth).toBe(trainingDummy.maxHealth - sword.damage - config.attackTotal);
+      // eslint-disable-next-line max-len
+      expect(trainingDummy.health).toBe(trainingDummy.maxHealth - sword.damage - player.attackTotal);
     });
     it('can describe its attack', () => {
       const attackLine = `${player.name} lets out a ${player.dialogue}, and hits ${trainingDummy.name} with ${sword.name} for ${sword.damage} damage!`;
