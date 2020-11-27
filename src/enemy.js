@@ -23,8 +23,7 @@ Enemy.prototype.attack = function (target) {
   if (this.isAlive) {
     target._takeDamage(this.damage);
     return this._describeAttack(target);
-  }
-  else {
+  } else {
     return 'Enemy is dead'
   }
 };
